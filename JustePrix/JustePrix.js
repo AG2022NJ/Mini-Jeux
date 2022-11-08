@@ -3,6 +3,7 @@
 //Continuer tant qu'il n'a pas la bonne proposition
 
 let NumberToFind= 0;
+const resultDiv = document.getElementById("resultDiv");
 
 document.getElementById("beginGame")
     .addEventListener("click", function(){
@@ -19,10 +20,10 @@ document.getElementById("checkPropalButton").addEventListener("click", function(
 
 document.getElementById("userPropalInput")
     .addEventListener("keyup", function(event){
-        console.log(event);
-        debugger;
-        console.log("clavier sur input")
-    })
+        if(event.key == 'Enter'){
+            checkPropal();
+        }
+    });
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -31,12 +32,12 @@ function getRandomInt(max) {
 function checkPropal(){
     let numberPropal = document.getElementById("userPropalInput").value;
     if(NumberToFind > numberPropal){
-        //C'est plus
+        resultDiv.innerHTML = "C'est plus ! ";
     }
     else if(NumberToFind < numberPropal){
-        //C'est moins
+        resultDiv.innerHTML = "C'est moins ! ";
     }
     else if(NumberToFind == numberPropal){
-        //C'est gagné
+        resultDiv.innerHTML = "C'est gagné ! ";
     }
   }
